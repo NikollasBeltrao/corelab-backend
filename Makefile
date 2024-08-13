@@ -1,28 +1,34 @@
-CONTAINER_NAME = laravel_app
-APP_NAME = laravel_app
+CONTAINER_NAME = api
+DOCKER_COMP = docker compose
 
 build:
-	docker-compose build
+	$(DOCKER_COMP) build
 
 up:
-	docker-compose up -d
+	$(DOCKER_COMP) up -d
 
 down:
-	docker-compose down
+	$(DOCKER_COMP) down
 
 migrate:
-	docker-compose exec $(CONTAINER_NAME) php artisan migrate
+	$(DOCKER_COMP) exec $(CONTAINER_NAME) php artisan migrate
 
 seed:
-	docker-compose exec $(CONTAINER_NAME) php artisan db:seed
+	$(DOCKER_COMP) exec $(CONTAINER_NAME) php artisan db:seed
 
 test:
-	docker-compose exec $(CONTAINER_NAME) php artisan test
+	$(DOCKER_COMP) exec $(CONTAINER_NAME) php artisan test
 
 restart: down up
 
 logs:
-	docker-compose logs -f
+	$(DOCKER_COMP) logs -f
 
-artisan:
-	docker-compose exec $(CONTAINER_NAME) php artisan $(command)
+php-artisan:
+	$(DOCKER_COMP) exec $(CONTAINER_NAME) php artisan $(command)
+
+composer-install:
+	$(DOCKER_COMP) exec $(CONTAINER_NAME) composer install
+
+key-generate:
+	make artisan command=key:generate
