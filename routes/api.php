@@ -20,6 +20,6 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('/register', [UserController::class, 'store']);
 
 Route::middleware('checktoken')->group(function () {
-    Route::apiResource('usuarios', UserController::class);
+    Route::apiResource('users', UserController::class);
     Route::apiResource('cards', CardController::class);
 });
