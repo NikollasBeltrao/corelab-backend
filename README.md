@@ -1,64 +1,82 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Corelab Notas
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto consiste em uma aplicação web que permite aos usuários criar e gerenciar suas listas de tarefas (to-do lists). A aplicação é composta por duas partes principais:
 
-## About Laravel
+- **Frontend**: Uma página web responsiva desenvolvida em React, que oferece uma interface interativa e amigável para os usuários criarem, visualizarem e gerenciarem suas listas de tarefas. O frontend é projetado para ser intuitivo e responsivo, garantindo uma boa experiência em diversos dispositivos.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Backend**: Uma API desenvolvida em PHP Laravel para armazenar e gerenciar as listas de tarefas dos usuários. O backend fornece endpoints para criar, ler, atualizar e excluir tarefas.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Funcionalidades
+- **Gerenciamento de tarefas**: Operações completas para criar, ler, atualizar e deletar tarefas.
+- **Gerenciamento de Usuários**: Operações completas para criar, ler, atualizar e deletar usuários.
+- **Autenticação e Autorização**: Mecanismos para registro, login e proteção de rotas.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Tecnologias Utilizadas no Backend
+- [Laravel](https://laravel.com/) Framework PHP para desenvolvimento de aplicações web, utilizado para construir a API e gerenciar a lógica de negócios do backend.
+- [MySQL](https://www.mysql.com/) Sistema de gerenciamento de banco de dados relacional usado para armazenar dados da aplicação.
+- [Docker](https://www.docker.com/) Plataforma para criar, implantar e executar aplicações em containers, garantindo que o ambiente de desenvolvimento e produção sejam consistentes.
+- [Nginx](https://nginx.org/) Servidor web utilizado para servir a aplicação e gerenciar o tráfego HTTP.
+- [PHP 7.4-FPM](https://www.php.net/) Versão do PHP com suporte a FastCGI Process Manager, otimizada para desempenho em ambientes de produção.
 
-## Learning Laravel
+## Requisitos para rodar a aplicação
+- **Docker**.
+- **Docker Compose**.
+#### Caso não use docker
+#### Frontend
+- **Node**.js: Versão 20.x.
+- **npm**: Versão 10.x.
+#### Backend
+- **PHP**: Versão 7.4.
+- **Composer**: Versão 2.x.
+#### Banco de Dados
+- **MySQL**: Versão 8.x.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Instalação
+Para começar a trabalhar com a aplicação, você precisará clonar os repositórios do frontend e do backend.
+- **Frontend**: `git clone https://github.com/NikollasBeltrao/corelab-frontend.git`
+- **Backend**: `git clone https://github.com/NikollasBeltrao/corelab-backend.git`
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+### Backend
+- No terminal navegue até o diretório do projeto `cd corelab-backend`.
+- Altere o arquivo `.env.example` para `.env`.
+- No arquivo `.env`, altere as variáveis do banco para:
+```
+DB_CONNECTION=mysql
+DB_HOST=db
+DB_PORT=3306
+DB_DATABASE=corelab_challenge
+DB_USERNAME=root
+DB_PASSWORD=root
+```
+#### Caso use docker
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- Crie o container com `docker compose build` ou usando o *Makefile* `make build`.
+- Instale as dependências  do composer com `docker compose exec api composer install` ou usando o *Makefile* `make composer-install`.
+- Inicie o container com `docker compose up` ou usando o *Makefile* `make up`.
+- Crie as tabelas no banco com `docker compose exec api php artisan migrate` ou  usando o *Makefile* `make migrate`.
+- Gere uma `APP_KEY` no laravel com `docker compose exec api php artisan key:generate`  ou  usando o *Makefile* `make key-generate`.
+- Teste o phpMyAdmin abrindo `http://localhost:8001/` no navegador.
+- Teste o projeto abrindo `http://localhost:8000/` no navegador.
 
-### Premium Partners
+#### Caso não use docker
+- Instale as dependências  do composer com `composer install`.
+- Crie as tabelas no banco com `php artisan migrate`.
+- Inicie o projeto com `php artisan serve`.
+- Gere uma `APP_KEY` no laravel com `php artisan key:generate`.
+- Teste o projeto abrindo `http://localhost:8000/` no navegador.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+**OBS: Dependendo da versão do docker o comando pode ser `docker-compose`.**
 
-## Contributing
+### Frontend
+- No terminal navegue até o diretório do projeto `cd corelab-frontend`.
+- Altere o arquivo `.env.development.exemple` para `.env.development` e confira na variável `REACT_APP_API_URL` se o caminho e a porta para a API estão corretos.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+#### Caso use docker
+- Crie o container com `docker compose build` ou usando o *Makefile* `make build`.
+- Inicie o container com `docker compose up` ou usando o *Makefile* `make up`.
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+#### Caso não use docker
+- Instale as dependencias do node com `npm install`.
+- Inicie o projeto com `npm start`.
+- Acesse o projeto abrindo `http://localhost:3000/` no navegador.

@@ -31,4 +31,4 @@ composer-install:
 	$(DOCKER_COMP) exec $(CONTAINER_NAME) composer install
 
 key-generate:
-	make artisan command=key:generate
+	make php-artisan command=key:generate

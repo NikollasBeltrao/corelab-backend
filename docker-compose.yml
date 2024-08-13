@@ -38,7 +38,7 @@ services:
     links:
       - db
     ports:
-      - "8000:80"
+      - "8001:80"
     environment:
       - PMA_ARBITRARY=1
       - UPLOAD_LIMIT=100M
@@ -50,7 +50,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "8007:80"
+      - "8000:80"
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
