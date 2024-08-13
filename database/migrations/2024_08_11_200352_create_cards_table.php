@@ -20,12 +20,6 @@ class CreateCardsTable extends Migration
             $table->text('content')->nullable();
             $table->string('title')->nullable();
             $table->boolean('favorite');
-
-            $table->foreign('id_user')
-                ->references('id_user')
-                ->on('users')
-                ->onDelete('restrict')
-                ->onUpdate('restrict');
         });
     }
 
