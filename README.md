@@ -18,6 +18,15 @@ Este projeto consiste em uma aplicação web que permite aos usuários criar e g
 - [Nginx](https://nginx.org/) Servidor web utilizado para servir a aplicação e gerenciar o tráfego HTTP.
 - [PHP 7.4-FPM](https://www.php.net/) Versão do PHP com suporte a FastCGI Process Manager, otimizada para desempenho em ambientes de produção.
 
+## Tecnologias Utilizadas no Frontend
+- [Node.js](https://nodejs.org/pt) Ambiente de execução JavaScript no lado do servidor, utilizado para executar scripts JavaScript fora do navegador e gerenciar pacotes e dependências da aplicação através do npm (Node Package Manager).
+- [React](https://react.dev/) Biblioteca JavaScript para construção de interfaces de usuário, utilizada para criar componentes de frontend e gerenciar o estado da aplicação.
+- [Redux](https://redux.js.org/) Biblioteca para gerenciamento de estado global em aplicações JavaScript, usada para armazenar e gerenciar o estado da aplicação em uma store global.
+- [Axios](https://axios-http.com/) Biblioteca para realizar requisições HTTP em JavaScript, usada para comunicação com APIs e gerenciamento de dados entre o frontend e o backend.
+- [TypeScript](https://www.typescriptlang.org/) Superset do JavaScript que adiciona tipagem estática opcional, usado para melhorar a segurança e a robustez do código.
+- [Bootstrap 5](https://getbootstrap.com/) Framework de CSS para design responsivo e estilização rápida, usado para estilizar e criar uma interface de usuário moderna e amigável.
+- [Sass](https://sass-lang.com/) Pré-processador CSS que permite usar variáveis, aninhamento e outras funcionalidades avançadas, utilizado para escrever e manter o CSS da aplicação.
+
 ## Requisitos para rodar a aplicação
 - **Docker**.
 - **Docker Compose**.
